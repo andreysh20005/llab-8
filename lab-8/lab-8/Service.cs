@@ -30,7 +30,7 @@ internal class Service
         string name = Interface.InputString("Введите название услуги");
         double price = Interface.InputNum("введите полную цену услуги");
         string companyName = Interface.InputString("введите название компании, оказывающей услуги");
-        int discount = Interface.InputNum("введите существующую скидку (0 если полная цена, 100 если бесплатно)");
+        int discount = Interface.InputNum("введите существующую скидку (0 если полная цена, 100 если бесплатно)", true);
         bool isActive = Interface.InputBool("Если услуга доступна сейчас, введите 'Y', иначе введите 'N'");
         Service newData = new Service(name, price, companyName, discount, isActive);
         return newData;

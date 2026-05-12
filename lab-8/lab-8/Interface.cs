@@ -12,12 +12,12 @@
             {
                 Console.WriteLine("Некорректный ввод. Попробуйте еще раз:");
             }
-            else if (result<0)
+            if (result<0)
             {
                 Console.WriteLine("необходимо НАТУРАЛЬНОЕ число!");
                 ok = false;
             }
-            else if (IsDiscount && result > 100)
+            if (IsDiscount && result > 100)
             {
                 Console.WriteLine("Скидка не может быть больше 100!");
                 ok = false;
@@ -76,14 +76,14 @@
 6 - найти реальную цену для одной услуги по имени
 7 - добавить услугу
 8 - удалить услугу по имени
+q - выход
 ");
         string action = Console.ReadLine();
         switch (action)
         {
             case "q":
             {
-                    return false;
-                    break;
+                return false;
             }
             case "1":
             {
@@ -98,7 +98,7 @@
             }
             case "3":
             {
-                    int discount = InputNum("Введите искомую скидку (натуральное число от 0 до 100)");
+                int discount = InputNum("Введите искомую скидку (натуральное число от 0 до 100)", true);
                 PrintData(DataBase.GetWithCurrentDiscount(discount));
                 break;
             }

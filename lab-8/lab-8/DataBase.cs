@@ -50,34 +50,35 @@ internal class DataBase
             from data in ReadAll()
             where data.IsActive == true
             orderby data.Name
-            select data).ToList();
+            select data
+            ).ToList();
     }
     public static List<Service> GetWithCurrentDiscount(int discount)
     {
         return ( from data in ReadAll()
                  where data.Discount == discount
                  orderby data.Name
-                 select data).ToList();
+                 select data
+                 ).ToList();
     }
     public static List<Service> GetRealPrice()
     {
-        return (from data in ReadAll()
+        return (
+                from data in ReadAll()
                 select CalculateRealPrice(data)
                 ).ToList();
-
     }
     public static Service FindByName(string name)
     {
-        return ( from data in ReadAll()
-                 where data.Name == name
-                 select data).FirstOrDefault();
+        return (
+                from data in ReadAll()
+                where data.Name == name
+                select data
+                 ).FirstOrDefault();
     }
     public static Service GetServiceRealPrice(string name)
     {
-        return (from data in ReadAll()
-                where data.Name == name
-                select CalculateRealPrice(data)
-                ).FirstOrDefault();
+        return CalculateRealPrice(FindByName(name));
     }
     private static Service CalculateRealPrice(Service service)
     {
@@ -98,8 +99,8 @@ internal class DataBase
 
     public static void DeleateByName(string name)
     {
-        SaveAll(
-            (from data in ReadAll()
+        SaveAll((
+             from data in ReadAll()
              where data.Name != name
              select data
              ).ToList());
