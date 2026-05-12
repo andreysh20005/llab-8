@@ -60,6 +60,7 @@
         Console.WriteLine("=====================");
         foreach (var data in ListOfData)
         {
+            count++;
             Console.WriteLine($"{count}: {data}");
         }
         Console.WriteLine("=====================");
@@ -75,7 +76,6 @@
 6 - найти реальную цену для одной услуги по имени
 7 - добавить услугу
 8 - удалить услугу по имени
-
 ");
         string action = Console.ReadLine();
         switch (action)
